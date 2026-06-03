@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Chosun Paywall Remover
+// @name         Chosun Wall Remover
 // @namespace    http://tampermonkey.net/
 // @version      2026-05-29
 // @description  Remove membership wall and restore full article using Fusion CMS
