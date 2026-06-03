@@ -1,9 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @namespace    http://tampermonkey.net/
-// @version      2026-05-29
-// @description  Remove membership wall and restore full article using Fusion CMS
-// @author       You
+// @author       J W
 // @match        *://*.chosun.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @downloadURL  https://raw.githubusercontent.com/himawarihome/myList/refs/heads/main/chosun-wall_remover.js
