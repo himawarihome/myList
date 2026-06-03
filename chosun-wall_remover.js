@@ -178,10 +178,12 @@
                         </figure>`;
                 }
 
-                default:
+                default: {
+					alert('!!!!!!!!!NEW TYPE!!!!!!!!!');
                     return el.content
-                        ? `<div style="margin-bottom: 24px; font-family: 'chosun-myeongjo', serif; font-size: 18px; line-height: 1.8; color: #222;" data-type="${el.type}">${el.content}</div>`
+                        ? '!!!!!!!!!NEW TYPE!!!!!!!!!' + `<div style="margin-bottom: 24px; font-family: 'chosun-myeongjo', serif; font-size: 18px; line-height: 1.8; color: #222;" data-type="${el.type}">${el.content}</div>`
                         : '';
+				}
             }
         }).join('\n');
 
