@@ -4,6 +4,8 @@
 // @version      2026-05-29
 // @description  Remove membership wall and restore full article
 // @author       J W
+// @downloadURL  https://raw.githubusercontent.com/himawarihome/myList/refs/heads/main/chosun-wall_remover.js
+// @updateURL    https://raw.githubusercontent.com/himawarihome/myList/refs/heads/main/chosun-wall_remover.js
 // @match        *://*.chosun.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @grant        unsafeWindow
