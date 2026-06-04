@@ -176,10 +176,57 @@
                         </figure>`;
                 }
 
+                case 'gallery': {
+                    const title = el.headlines?.basic ?? '';
+                    const images = (el.content_elements ?? [])
+                        .filter(img => img.type === 'image')
+                        .map(img => {
+                                        const src = img.resizedUrls?.article_lg
+                                            ?? img.resizedUrls?.article_md
+                                            ?? img.url ?? '';
+                                        const caption = img.subtitle || img.caption || '';
+                                        const alt = img.subtitle ?? '';
+
+                                        return `
+                                            <figure style="margin: 0 0 12px 0; padding: 0;">
+                                            <img
+                                            src="${src}"
+                                            alt="${alt}"
+                                            style="width: 100%; display: block;"
+                                            loading="lazy"
+                                            >
+                                            ${caption
+                                                ? `<figcaption style="
+                                                margin-top: 8px;
+                                                font-family: 'NotoSansKR-Regular', sans-serif;
+                                                font-size: 14px;
+                                                color: #707070;
+                                                letter-spacing: -0.3px;
+                                                word-break: keep-all;
+                                                ">${caption}</figcaption>`
+                                                : ''}
+                                                </figure>`;
+                                    })
+                            .join('\n');
+
+                    return `
+                        <div style="margin-bottom: 24px;">
+                        ${title
+                        ? `<p style="
+                        font-family: 'NotoSansKR-Regular', sans-serif;
+                        font-size: 14px;
+                        color: #707070;
+                        margin: 0 0 12px 0;
+                        ">${title}</p>`
+                    : ''}
+                    ${images}
+                    </div>`;
+                }
+				
                 default: {
-					alert('!!!!!!!!!NEW TYPE!!!!!!!!!');
+					alert('!!!!!!!!!NEW TYPE!!!!!!!!!'+el.type);
                     return el.content
-                        ? '!!!!!!!!!NEW TYPE!!!!!!!!!' + `<div style="margin-bottom: 24px; font-family: 'chosun-myeongjo', serif; font-size: 18px; line-height: 1.8; color: #222;" data-type="${el.type}">${el.content}</div>`
+                        ? `<div style="margin-bottom: 24px; font-family: 'chosun-myeongjo', serif; font-size: 18px; line-height: 1.8; color: #222;" data-type="${el.type}">${el.content}</div>`
                         : '';
 				}
             }
