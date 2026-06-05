@@ -16,7 +16,7 @@
 
     const freeBanner = document.querySelector('.status-banner.free-banner');
     const membershipWall = document.querySelector('.membership-wall');
-    if (freeBanner == null || membershipWall == null) {
+    if (freeBanner == null && membershipWall == null) {
         console.warn('[Chosun] .membership-wall not found');
         return;
     }
