@@ -1,5 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
+// @description  Chosun Wall Remover
+// @version      0.1
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        *://*.chosun.com/*
