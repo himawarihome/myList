@@ -12,8 +12,9 @@
 (function () {
     'use strict';
 
+    const freeBanner = document.querySelector('.status-banner.free-banner');
     const membershipWall = document.querySelector('.membership-wall');
-    if (membershipWall == null) {
+    if (freeBanner == null || membershipWall == null) {
         console.warn('[Chosun] .membership-wall not found');
         return;
     }
@@ -115,6 +116,71 @@
                     const alignStyle = el.alignment === 'center' ? 'text-align: center;' : '';
                     return `<p style="${P_STYLE} ${alignStyle}">${el.content}</p>`;
                 }
+
+				case 'quote': {
+					const isPullquote = el.subtype === 'pullquote';
+					const citation = el.citation?.content ?? '';
+
+					const inner = (el.content_elements ?? [])
+						.map((item, i) => `
+							<div style="
+							font-family: 'NotoSansKR-Regular', 'Noto Sans KR', sans-serif;
+							font-size: 20px;
+							line-height: 1.8;
+							letter-spacing: -0.3px;
+							color: #222222;
+							word-break: keep-all;
+							${i > 0 ? 'margin-top: 16px;' : ''}
+							">${item.content ?? ''}</div>
+							`)
+						.join('\n');
+
+				// pullquote: 위아래 구분선 박스
+				if (isPullquote) {
+					return `
+						<blockquote style="
+						margin: 24px 0;
+						padding: 20px 24px;
+						background: #f8f8f8;
+						border-top: 1px solid #9C9C9C;
+						border-bottom: 1px solid #9C9C9C;
+						box-sizing: border-box;
+						">
+						${inner}
+						${citation
+						? `<cite style="
+							display: block;
+							margin-top: 12px;
+							font-family: 'NotoSansKR-Regular', sans-serif;
+							font-size: 14px;
+							color: #707070;
+							font-style: normal;
+							">${citation}</cite>`
+						: ''}
+						</blockquote>`;
+				}
+
+				// blockquote: 좌측 회색 세로줄 (실제 렌더링 기준)
+				return `
+					<blockquote style="
+						margin: 24px 0;
+						padding-left: 16px;
+						border-left: 2px solid #BCBCBC;
+						box-sizing: border-box;
+					">
+					${inner}
+					${citation
+					? `<cite style="
+						display: block;
+						margin-top: 12px;
+						font-family: 'NotoSansKR-Regular', sans-serif;
+						font-size: 14px;
+						color: #707070;
+						font-style: normal;
+						">${citation}</cite>`
+					: ''}
+					</blockquote>`;
+				}
 
                 case 'header': {
                     const lvl = el.level ?? 2;
