@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.1
+// @version      0.2
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        *://*.chosun.com/*
@@ -356,7 +356,45 @@
                     ${images}
                     </div>`;
                 }
-				
+
+				case 'oembed_response': {
+					const embedHtml = el.raw_oembed?.html ?? '';
+					if (!embedHtml) return '';
+
+					const isYoutube = el.subtype === 'youtube';
+
+					// 유튜브는 16:9 비율 반응형 래퍼로 감싸기	
+					if (isYoutube) {
+						return `
+							<div style="
+								position: relative;
+								width: 100%;
+								padding-bottom: 56.25%; /* 16:9 비율 */
+								height: 0;
+								overflow: hidden;
+								margin: 0 0 24px 0;
+								">
+							<div style="
+								position: absolute;
+								top: 0; left: 0;
+								width: 100%; height: 100%;
+								">
+							${embedHtml.replace(
+								/width="[^"]*"/, 'width="100%"'
+								).replace(
+								/height="[^"]*"/, 'height="100%"'
+								).replace(
+								/<iframe/, '<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;"'
+								)}
+							</div>
+							</div>`;
+					}
+
+					// 그 외 oembed (트위터 등): raw html 그대로
+					alert('!!!!!!!!!NEW SUBTYPE of oembed_response!!!!!!!!!'+el.subtype);
+					return `<div style="margin: 0 0 24px 0;">${embedHtml}</div>`;
+				}
+					
                 default: {
 					alert('!!!!!!!!!NEW TYPE!!!!!!!!!'+el.type);
                     return el.content
