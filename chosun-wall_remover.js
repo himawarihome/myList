@@ -175,7 +175,8 @@
 
                 case 'header': {
                     const lvl = el.level ?? 2;
-                    return `<h${lvl} style="${H_STYLE(lvl)}">${el.content ?? ''}</h${lvl}>`;
+                    //return `<h${lvl} style="${H_STYLE(lvl)}">${el.content ?? ''}</h${lvl}>`;
+					return `<h${lvl} class="h${lvl} font--tertiary"><b>${el.content}</b></h${lvl}>`;
                 }
 
                 case 'raw_html': {
