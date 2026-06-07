@@ -57,20 +57,7 @@
             `;
 
         const CONTAINER = `max-width: 616px; margin: 0 auto; padding: 0 16px; box-sizing: border-box;`;
-
-        const P_STYLE = `
-            font-family: "chosun-myeongjo", "ChosunNM", Georgia, serif;
-            font-size: 18px;
-            line-height: 1.8;
-            letter-spacing: -0.3px;
-            color: #222222;
-            text-align: left;
-            word-break: keep-all;
-            overflow-wrap: break-word;
-            margin: 0 0 24px 0;
-            padding: 0;
-            `;
-
+		
         const H_STYLE = (level) => {
             const sizes = { 1: '28px', 2: '24px', 3: '20px', 4: '18px' };
             const fs = sizes[level] || '18px';
@@ -115,8 +102,10 @@
 
                 case 'text': {
                     if (el.content == null || el.content === '') return '';
-                    const alignStyle = el.alignment === 'center' ? 'text-align: center;' : '';
-                    return `<p style="${P_STYLE} ${alignStyle}">${el.content}</p>`;
+	            	return `<p class="
+		                article-body__content article-body__content-text |
+		                text--black text font--size-sm-18 font--size-md-18 font--primary font--myeongjo text--line-height-md
+		                ">${el.content}</p>`
                 }
 
 				case 'quote': {
