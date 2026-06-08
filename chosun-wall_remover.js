@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.3.1
+// @version      0.3.2
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        *://*.chosun.com/*
@@ -117,7 +117,7 @@
 							<div style="
 							font-family: 'NotoSansKR-Regular', 'Noto Sans KR', sans-serif;
 							font-size: 20px;
-							line-height: 1.8;
+							line-height: 0.6;
 							letter-spacing: -0.3px;
 							color: #222222;
 							word-break: keep-all;
