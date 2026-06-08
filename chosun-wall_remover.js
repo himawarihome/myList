@@ -117,7 +117,7 @@
 							<div style="
 							font-family: 'NotoSansKR-Regular', 'Noto Sans KR', sans-serif;
 							font-size: 20px;
-							line-height: 0.6;
+							line-height: 0.7;
 							letter-spacing: -0.3px;
 							color: #222222;
 							word-break: keep-all;
