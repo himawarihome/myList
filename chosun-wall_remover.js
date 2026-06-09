@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.3.2
+// @version      0.3.3
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        *://*.chosun.com/*
@@ -186,83 +186,17 @@
                 case 'divider': {
                     return `<hr style="${HR_STYLE}">`;
                 }
-
-				case 'quote': {
-					const isPullquote = el.subtype === 'pullquote';
-					const citation = el.citation?.content ?? '';
 				
-					const inner = (el.content_elements ?? [])
-						.map(item => `
-							<p style="
-								font-family: 'NotoSansKR-Regular', 'Noto Sans KR', sans-serif;
-								font-size: 16px;
-								line-height: 1.8;
-								letter-spacing: -0.3px;
-								color: #222222;
-								word-break: keep-all;
-								margin: 0 0 8px 0;
-								padding: 0;
-								">${item.content ?? ''}</p>
-						`)
-						.join('\n');
-				
-					// pullquote: 강조 박스 스타일
-					if (isPullquote) {
-						return `
-							<blockquote style="
-							margin: 0 0 24px 0;
-							padding: 20px 24px;
-							background: #f8f8f8;
-							border-left: 3px solid #222222;
-							box-sizing: border-box;
-							">
-							${inner}
-							${citation
-							? `<cite style="
-							display: block;
-							margin-top: 12px;
-							font-family: 'NotoSansKR-Regular', sans-serif;
-							font-size: 14px;
-							color: #707070;
-							font-style: normal;
-							">${citation}</cite>`
-							: ''}
-							</blockquote>`;
-					}
-				
-					// blockquote: 구분선 스타일
-					return `
-						<blockquote style="
-						margin: 0 0 24px 0;
-						padding: 16px 0;
-						border-top: 1px solid #9C9C9C;
-						border-bottom: 1px solid #9C9C9C;
-						box-sizing: border-box;
-						">
-						${inner}
-						${citation
-						? `<cite style="
-						display: block;
-						margin-top: 12px;
-						font-family: 'NotoSansKR-Regular', sans-serif;
-						font-size: 14px;
-						color: #707070;
-						font-style: normal;
-						">${citation}</cite>`
-						: ''}
-						</blockquote>`;
-				}
-					
                 case 'list': {
                     const tag = el.list_type === 'ordered' ? 'ol' : 'ul';
                     const listStyle = el.list_type === 'ordered'
                         ? 'list-style-type: decimal;'
                         : 'list-style-type: disc;';
                     const items = (el.items ?? [])
-                        .map(item => `<li style="${LI_STYLE}">${item.content ?? ''}</li>`)
+                        .map(item => `<li class="content-list-item text--black content-list-item-first flex flex-wrap box--pad-top-xs">${item.content ?? ''}</li>`)
                         .join('\n');
                     return `
-                        <${tag} style="${listStyle} margin: 0 0 24px 0; padding-left: 24px;">
+                        <${tag} class="article-body__content article-body__content-list font--size-sm-18 font--size-md-18 font--primary font--myeongjo text--line-height-md">
                         ${items}
                         </${tag}>`;
                 }
