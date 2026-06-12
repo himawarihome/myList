@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.3.6
+// @version      0.3.7
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        *://*.chosun.com/*
@@ -23,10 +23,6 @@
     }
     // membership-wall 관련 요소 제거
     //membershipWall.remove();
-
-    // 본문 overflow 잠금 해제 (페이월이 scroll을 막는 경우)
-    //document.body.style.overflow = '';
-    //document.documentElement.style.overflow = '';
 
     // Fusion globalContent에서 본문 추출
     //const fusion = unsafeWindow.Fusion;
@@ -119,7 +115,7 @@
 							<div style="
 							font-family: 'NotoSansKR-Regular', 'Noto Sans KR', sans-serif;
 							font-size: 20px;
-							line-height: 0.7;
+							line-height: 1.5;
 							letter-spacing: -0.3px;
 							color: #222222;
 							word-break: keep-all;
