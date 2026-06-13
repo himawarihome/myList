@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.3.8
+// @version      0.3.9
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        *://*.chosun.com/*
@@ -25,8 +25,7 @@
     //membershipWall.remove();
 
     // Fusion globalContent에서 본문 추출
-    //const fusion = unsafeWindow.Fusion;
-	const fusion = (typeof unsafeWindow !== 'undefined' ? unsafeWindow : window).Fusion;
+    const fusion = unsafeWindow.Fusion;
     if (!fusion?.globalContent?.content_elements) {
         console.warn('[Chosun] Fusion.globalContent.content_elements not found');
         return;
