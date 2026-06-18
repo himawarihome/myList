@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.3.13
+// @version      0.4.0
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        *://*.chosun.com/*
@@ -346,10 +346,6 @@
 	    articleBody.innerHTML = html;
 	    console.info('[Chosun] Article restored successfully');
 	}
+	
 	window.addEventListener('load', init); 
-	// 2. 이미 로드가 끝난 상태라면 즉시 실행 
-	if (document.readyState === 'complete') 
-	{ 
-		init();
-	}
 })();
