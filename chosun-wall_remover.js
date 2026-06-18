@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.3.12
+// @version      0.3.13
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        *://*.chosun.com/*
@@ -9,7 +9,7 @@
 // @downloadURL  https://raw.githubusercontent.com/himawarihome/myList/refs/heads/main/chosun-wall_remover.js
 // @updateURL    https://raw.githubusercontent.com/himawarihome/myList/refs/heads/main/chosun-wall_remover.js
 // @grant        none
-// @run-at       document-idle
+// @run-at       document-end
 // ==/UserScript==
 
 (function () {
