@@ -25,8 +25,9 @@
     //membershipWall.remove();
 
     // Fusion globalContent에서 본문 추출
-    const fusion = window.Fusion;
+    const fusion = window?.Fusion;
     if (!fusion?.globalContent?.content_elements) {
+		alert('fusion undefined');
         console.warn('[Chosun] Fusion.globalContent.content_elements not found');
         return;
     }
