@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.4.4
+// @version      0.4.5
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        *://*.chosun.com/*
@@ -15,7 +15,15 @@
 (function () {
     'use strict';
 
-	function init() {
+	function main() {
+	    // 기존 본문 컨테이너를 찾아
+	    const articleBody = document.querySelector('.article-body');
+	    if (articleBody == null) {
+	        console.warn('[Chosun] ..article-body not found');
+            setTimeout(main, 300);
+	        return;
+	    }
+		
 	    //const freeBanner = document.querySelector('.status-banner.free-banner');
 	    //const membershipWall = document.querySelector('.membership-wall');
         const membershipBanner = document.querySelector('.article-membership-banner');
