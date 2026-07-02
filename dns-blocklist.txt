@@ -1,5 +1,5 @@
-veta.naver.com
 !t1.kakaocdn.net
+!veta.naver.com
+!trillion.toss.im
 cdn-ads.tmap.co.kr
-trillion.toss.im
 advertisement-gw.travel-wallet.com
