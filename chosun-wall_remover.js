@@ -27,7 +27,6 @@
 	    //const freeBanner = document.querySelector('.status-banner.free-banner');
 	    //const membershipWall = document.querySelector('.membership-wall');
         const membershipBanner = document.querySelector('.article-membership-banner');
-	    //if (freeBanner == null && membershipWall == null) {
         if (membershipBanner == null) {
 	        console.warn('[Chosun] .membership-banner not found');
 	        return;
