@@ -3,3 +3,4 @@
 !trillion.toss.im
 cdn-ads.tmap.co.kr
 advertisement-gw.travel-wallet.com
+*.quetta.net
