@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name            Bypass Paywalls Clean - chosun.com
-// @version         0.1.1
+// @version         0.1.2
 // @description     Bypass membership paywalls of chosun.com
 // @author          magnolia1234(J W)
 // @match           *://*.chosun.com/*
@@ -211,5 +211,5 @@
         //if (typeof ads_hide === 'function') ads_hide();
         var leaky_paywall_unhide_disable;
         if (!leaky_paywall_unhide_disable && typeof leaky_paywall_unhide === 'function') leaky_paywall_unhide();
-    }, 1000);
+    }, 100);
 })();
