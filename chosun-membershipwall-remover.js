@@ -1,13 +1,67 @@
 // ==UserScript==
 // @name            Bypass Paywalls Clean - chosun.com
-// @version         0.1.2
-// @description     Bypass membership paywalls of chosun.com
+// @version         0.1.3
+// @description     Bypass Paywalls of chosun.com
 // @author          magnolia1234(J W)
 // @match           *://*.chosun.com/*
 // @grant           none
-// @require         https://gitflic.ru/project/magnolia1234/bypass-paywalls-clean-filters/blob/raw?file=userscript/bpc_func.js
 // ==/UserScript==
+
 (function() {
+
+    function parseHtmlEntities(encodedString) {
+        let parser = new DOMParser();
+        let doc = parser.parseFromString('<textarea>' + encodedString + '</textarea>', 'text/html');
+        let dom = doc.querySelector('textarea');
+        return dom.value;
+    }
+
+    function insert_script(func, insertAfterDom) {
+        let bpc_script = document.querySelector('script#bpc_script');
+        if (!bpc_script) {
+            let script = document.createElement('script');
+            script.setAttribute('id', 'bpc_script');
+            script.appendChild(document.createTextNode('(' + func + ')();'));
+            let insertAfter = insertAfterDom ? insertAfterDom : (document.body || document.head || document.documentElement);
+            insertAfter.appendChild(script);
+        }
+    }
+
+    function makeFigure(url, caption_text, img_attrib = {}, caption_attrib = {}) {
+        let elem = document.createElement('figure');
+        let img = document.createElement('img');
+        img.src = url;
+        for (let attrib in img_attrib)
+            if (img_attrib[attrib])
+                img.setAttribute(attrib, img_attrib[attrib]);
+        elem.appendChild(img);
+        if (caption_text) {
+            let caption = document.createElement('figcaption');
+            for (let attrib in caption_attrib)
+                if (caption_attrib[attrib])
+                    caption.setAttribute(attrib, caption_attrib[attrib]);
+            let cap_par = document.createElement('p');
+            cap_par.innerText = caption_text;
+            caption.appendChild(cap_par);
+            elem.appendChild(caption);
+        }
+        return elem;
+    }
+
+    function leaky_paywall_unhide() {
+        if (document.querySelector('head > link[href*="/leaky-paywall"], script[src*="/leaky-paywall"], div[id^="issuem-leaky-paywall-"]')) {
+            let js_cookie = document.querySelector('script#leaky_paywall_cookie_js-js-extra');
+            if (js_cookie && js_cookie.text.includes('"post_container":"')) {
+                let post_sel = js_cookie.text.split('"post_container":"')[1].split('"')[0];
+                if (post_sel) {
+                    let post = document.querySelector(post_sel);
+                    if (post)
+                        post.removeAttribute('class');
+                }
+            }
+        }
+    }
+
     const membershipBanner = document.querySelector('.article-membership-banner');
     //if (freeBanner == null && membershipWall == null) {
     if (membershipBanner == null) {
@@ -22,6 +76,7 @@
             window.Fusion.globalContent.content_restrictions = {};
         }
     }
+
     window.setTimeout(function () {
         insert_script(crain_main);
     }, 100);
@@ -108,6 +163,7 @@
                                         par_new.appendChild(li);
                                     }
                                 }
+                            }
                             else if (par.type === 'quote') {
                                 if (par.content) {
                                     let doc = parser.parseFromString(
@@ -186,7 +242,6 @@
                                     let doc = parser.parseFromString('<p>' + par.content + '</p>', 'text/html');
                                     par_new = doc.querySelector('p');
                                 }
-                            }
                             } else if (!['custom_embed'].includes(par.type)) {
                                 console.log(par);
                             } else {
