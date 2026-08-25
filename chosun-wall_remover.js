@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.5.1
+// @version      0.5.2
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        *://*.chosun.com/*
@@ -199,7 +199,7 @@
 	                        ? 'list-style-type: decimal;'
 	                        : 'list-style-type: disc;';
 	                    const items = (el.items ?? [])
-	                        .map(item => `<li class="content-list-item text--black content-list-item-first flex flex-wrap box--pad-top-xs">${item.content ?? ''}</li>`)
+	                        .map(item => `<li class="content-list-item text--black content-list-item-first flex flex-wrap box--pad-top-xs"><span>${item.content ?? ''}</span></li>`)
 	                        .join('\n');
 	                    return `
 	                        <${tag} class="article-body__content article-body__content-list font--size-sm-18 font--size-md-18 font--primary font--myeongjo text--line-height-md">
