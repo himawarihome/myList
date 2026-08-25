@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name            Bypass Paywalls Clean - chosun.com
-// @version         0.1.5
+// @version         0.1.6
 // @description     Bypass Paywalls of chosun.com
 // @author          magnolia1234(J W)
 // @match           *://*.chosun.com/*
@@ -224,6 +224,7 @@ function main() {
         let elem = document.createElement('figure');
         let img = document.createElement('img');
         img.src = url;
+        img.style = 'width: 100%; display: block;'
         for (let attrib in img_attrib)
             if (img_attrib[attrib])
                 img.setAttribute(attrib, img_attrib[attrib]);
