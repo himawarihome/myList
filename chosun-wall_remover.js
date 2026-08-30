@@ -120,15 +120,7 @@
 	
 						const inner = (el.content_elements ?? [])
 							.map((item, i) => `
-								<div style="
-								font-family: 'NotoSansKR-Regular', 'Noto Sans KR', sans-serif;
-								font-size: 20px;
-								line-height: 1.5;
-								letter-spacing: -0.3px;
-								color: #222222;
-								word-break: keep-all;
-								${i > 0 ? 'margin-top: 16px;' : ''}
-								">${item.content ?? ''}</div>
+								<div class="mt-md">${item.content ?? ''}</div>
 								`)
 							.join('\n');
 	
@@ -159,12 +151,7 @@
 	
 					// blockquote: 좌측 회색 세로줄 (실제 렌더링 기준)
 					return `
-						<blockquote style="
-							margin: 24px 0;
-							padding-left: 16px;
-							border-left: 2px solid #BCBCBC;
-							box-sizing: border-box;
-						">
+						<blockquote class="article-body__content article-body__content-blockquote | quote font--secondary box--border-grey-40 box--border-md box--margin-none box--border box--border-vertical box--border-vertical-left box--pad-left-md font--size-sm-20 font--size-md-20  text--black box--margin-top-md box--margin-bottom-md">
 						${inner}
 						${citation
 						? `<cite style="
