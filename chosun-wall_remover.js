@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.5.5
+// @version      0.5.6
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        https://www.chosun.com/*
@@ -41,58 +41,58 @@
 	    }
 	
 	    function contentElementsToHTML(contentElements) {
-	        const FONT_FACE = `
-	            @font-face {
-	            font-family: "chosun-myeongjo";
-	            src: url("//www.chosun.com/ChosunNM.woff2") format("woff2"),
-	            url("//www.chosun.com/ChosunNM.woff") format("woff");
-	            font-weight: 400; font-style: normal; font-display: swap;
-	            }
-	            @font-face {
-	            font-family: "NotoSansKR-Regular";
-	            src: url("//www.chosun.com/NotoSansKR-Regular.woff2") format("woff2"),
-	            url("//www.chosun.com/NotoSansKR-Regular.woff") format("woff");
-	            font-weight: 400; font-style: normal; font-display: swap;
-	            }
-	            @font-face {
-	            font-family: "NotoSansKR-Bold";
-	            src: url("//www.chosun.com/NotoSansKR-Bold.woff2") format("woff2"),
-	            url("//www.chosun.com/NotoSansKR-Bold.woff") format("woff");
-	            font-weight: 700; font-style: normal; font-display: swap;
-	            }
-	            `;
+// 	        const FONT_FACE = `
+// 	            @font-face {
+// 	            font-family: "chosun-myeongjo";
+// 	            src: url("//www.chosun.com/ChosunNM.woff2") format("woff2"),
+// 	            url("//www.chosun.com/ChosunNM.woff") format("woff");
+// 	            font-weight: 400; font-style: normal; font-display: swap;
+// 	            }
+// 	            @font-face {
+// 	            font-family: "NotoSansKR-Regular";
+// 	            src: url("//www.chosun.com/NotoSansKR-Regular.woff2") format("woff2"),
+// 	            url("//www.chosun.com/NotoSansKR-Regular.woff") format("woff");
+// 	            font-weight: 400; font-style: normal; font-display: swap;
+// 	            }
+// 	            @font-face {
+// 	            font-family: "NotoSansKR-Bold";
+// 	            src: url("//www.chosun.com/NotoSansKR-Bold.woff2") format("woff2"),
+// 	            url("//www.chosun.com/NotoSansKR-Bold.woff") format("woff");
+// 	            font-weight: 700; font-style: normal; font-display: swap;
+// 	            }
+// 	            `;
 	
-	        const CONTAINER = `max-width: 616px; margin: 0 auto; padding: 0 16px; box-sizing: border-box;`;
+// 	        const CONTAINER = `max-width: 616px; margin: 0 auto; padding: 0 16px; box-sizing: border-box;`;
 			
-	        const H_STYLE = (level) => {
-	            const sizes = { 1: '28px', 2: '24px', 3: '20px', 4: '18px' };
-	            const fs = sizes[level] || '18px';
-	            return `
-	                font-family: "NotoSansKR-Bold", "NotoSansKR-Regular", sans-serif;
-	                font-size: ${fs};
-	                font-weight: 700;
-	                line-height: 1.5;
-	                letter-spacing: -0.3px;
-	                color: #222222;
-	                word-break: keep-all;
-	                margin: 40px 0 16px 0;
-	                padding: 0;
-	                `;
-	        };
+// 	        const H_STYLE = (level) => {
+// 	            const sizes = { 1: '28px', 2: '24px', 3: '20px', 4: '18px' };
+// 	            const fs = sizes[level] || '18px';
+// 	            return `
+// 	                font-family: "NotoSansKR-Bold", "NotoSansKR-Regular", sans-serif;
+// 	                font-size: ${fs};
+// 	                font-weight: 700;
+// 	                line-height: 1.5;
+// 	                letter-spacing: -0.3px;
+// 	                color: #222222;
+// 	                word-break: keep-all;
+// 	                margin: 40px 0 16px 0;
+// 	                padding: 0;
+// 	                `;
+// 	        };
 	
 	        const HR_STYLE = `width: 40px; border: none; border-top: 1px solid #222222; margin: 32px 0;`;
 	
-	        const LI_STYLE = `
-	            font-family: "chosun-myeongjo", "ChosunNM", Georgia, serif;
-	            font-size: 18px;
-	            line-height: 1.8;
-	            letter-spacing: -0.3px;
-	            color: #222222;
-	            word-break: keep-all;
-	            overflow-wrap: break-word;
-	            margin-bottom: 8px;
-	            padding-left: 4px;
-	            `;
+// 	        const LI_STYLE = `
+// 	            font-family: "chosun-myeongjo", "ChosunNM", Georgia, serif;
+// 	            font-size: 18px;
+// 	            line-height: 1.8;
+// 	            letter-spacing: -0.3px;
+// 	            color: #222222;
+// 	            word-break: keep-all;
+// 	            overflow-wrap: break-word;
+// 	            margin-bottom: 8px;
+// 	            padding-left: 4px;
+// 	            `;
 	
 	        const CAPTION_STYLE = `
 	            margin-top: 8px;
@@ -320,10 +320,13 @@
 					}
 	            }
 	        }).join('\n');
-	
+
+//	        return `
+//	            <style>${FONT_FACE}</style>
+//	            <div style="${CONTAINER}">${inner}</div>
+//	            `.trim();
 	        return `
-	            <style>${FONT_FACE}</style>
-	            <div style="${CONTAINER}">${inner}</div>
+	            <div>${inner}</div>
 	            `.trim();
 	    }
 	
