@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.5.6
+// @version      0.5.7
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        https://www.chosun.com/*
@@ -126,6 +126,7 @@
 	
 					// pullquote: 위아래 구분선 박스
 					if (isPullquote) {
+						alert("pullquote");
 						return `
 							<blockquote style="
 							margin: 24px 0;
