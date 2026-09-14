@@ -80,7 +80,7 @@
 // 	                `;
 // 	        };
 	
-	        const HR_STYLE = `width: 40px; border: none; border-top: 1px solid #222222; margin: 32px 0;`;
+//	        const HR_STYLE = `width: 40px; border: none; border-top: 1px solid #222222; margin: 32px 0;`;
 	
 // 	        const LI_STYLE = `
 // 	            font-family: "chosun-myeongjo", "ChosunNM", Georgia, serif;
