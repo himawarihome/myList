@@ -178,7 +178,8 @@
 	                }
 	
 	                case 'divider': {
-	                    return `<hr style="${HR_STYLE}">`;
+	                    //return `<hr style="${HR_STYLE}">`;
+                        return `<hr class="article-body__content article-body__content-divider | box--border box--border-horizontal box--border-horizontal-bottom box--border-black" style="width: 40px;">`
 	                }
 					
 	                case 'list': {
