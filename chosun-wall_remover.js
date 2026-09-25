@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.5.7
+// @version      0.5.8
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        https://www.chosun.com/*
@@ -17,29 +17,28 @@
 
 	function main() {
 	    // 기존 본문 컨테이너를 찾아
-	    const articleBody = document.querySelector('.article-body');
-	    if (articleBody == null) {
-	        console.warn('[Chosun] ..article-body not found');
-            setTimeout(main, 300);
+	    const fusion_app = document.querySelector('#fusion-app');
+	    if (fusion_app == null) {
+	        console.warn('[Chosun] fusion-app not found');
+          setTimeout(main, 300);
 	        return;
 	    }
-		
+
 	    const freeBanner = document.querySelector('.status-banner.free-banner');
 	    //const membershipWall = document.querySelector('.membership-wall');
-        const membershipBanner = document.querySelector('.article-membership-banner');
-        if (freeBanner != null || membershipBanner == null) {
+      const membershipBanner = document.querySelector('.article-membership-banner');
+      if (freeBanner != null || membershipBanner == null) {
 	        console.warn('[Chosun] .membership-banner not found');
 	        return;
 	    }
-	
+
 	    // Fusion globalContent에서 본문 추출
 	    const fusion = window?.Fusion;
 	    if (!fusion?.globalContent?.content_elements) {
-			alert('fusion undefined');
 	        console.warn('[Chosun] Fusion.globalContent.content_elements not found');
 	        return;
 	    }
-	
+
 	    function contentElementsToHTML(contentElements) {
 // 	        const FONT_FACE = `
 // 	            @font-face {
@@ -61,9 +60,9 @@
 // 	            font-weight: 700; font-style: normal; font-display: swap;
 // 	            }
 // 	            `;
-	
+
 // 	        const CONTAINER = `max-width: 616px; margin: 0 auto; padding: 0 16px; box-sizing: border-box;`;
-			
+
 // 	        const H_STYLE = (level) => {
 // 	            const sizes = { 1: '28px', 2: '24px', 3: '20px', 4: '18px' };
 // 	            const fs = sizes[level] || '18px';
@@ -79,9 +78,9 @@
 // 	                padding: 0;
 // 	                `;
 // 	        };
-	
+
 //	        const HR_STYLE = `width: 40px; border: none; border-top: 1px solid #222222; margin: 32px 0;`;
-	
+
 // 	        const LI_STYLE = `
 // 	            font-family: "chosun-myeongjo", "ChosunNM", Georgia, serif;
 // 	            font-size: 18px;
@@ -93,7 +92,7 @@
 // 	            margin-bottom: 8px;
 // 	            padding-left: 4px;
 // 	            `;
-	
+
 	        const CAPTION_STYLE = `
 	            margin-top: 8px;
 	            font-family: "NotoSansKR-Regular", sans-serif;
@@ -102,10 +101,10 @@
 	            letter-spacing: -0.3px;
 	            word-break: keep-all;
 	            `;
-	
+
 	        const inner = contentElements.map((el) => {
 	            switch (el.type) {
-	
+
 	                case 'text': {
 	                    if (el.content == null || el.content === '') return '';
 		            	return `<p class="
@@ -113,17 +112,17 @@
 			                text--black text font--size-sm-18 font--size-md-18 font--primary font--myeongjo text--line-height-md
 			                ">${el.content}</p>`
 	                }
-	
+
 					case 'quote': {
 						const isPullquote = el.subtype === 'pullquote';
 						const citation = el.citation?.content ?? '';
-	
+
 						const inner = (el.content_elements ?? [])
 							.map((item, i) => `
 								<div class="mt-md">${item.content ?? ''}</div>
 								`)
 							.join('\n');
-	
+
 					// pullquote: 위아래 구분선 박스
 					if (isPullquote) {
 						alert("pullquote");
@@ -149,7 +148,7 @@
 							: ''}
 							</blockquote>`;
 					}
-	
+
 					// blockquote: 좌측 회색 세로줄 (실제 렌더링 기준)
 					return `
 						<blockquote class="article-body__content article-body__content-blockquote | quote font--secondary box--border-grey-40 box--border-md box--margin-none box--border box--border-vertical box--border-vertical-left box--pad-left-md font--size-sm-20 font--size-md-20  text--black box--margin-top-md box--margin-bottom-md">
@@ -166,22 +165,22 @@
 						: ''}
 						</blockquote>`;
 					}
-	
+
 	                case 'header': {
 	                    const lvl = el.level ?? 2;
 	                    //return `<h${lvl} style="${H_STYLE(lvl)}">${el.content ?? ''}</h${lvl}>`;
 						return `<h${lvl} class="h${lvl} font--tertiary"><b>${el.content}</b></h${lvl}>`;
 	                }
-	
+
 	                case 'raw_html': {
 	                    return `<div style="margin-bottom: 24px;">${el.content ?? ''}</div>`;
 	                }
-	
+
 	                case 'divider': {
 	                    //return `<hr style="${HR_STYLE}">`;
                         return `<hr class="article-body__content article-body__content-divider | box--border box--border-horizontal box--border-horizontal-bottom box--border-black" style="width: 40px;">`
 	                }
-					
+
 	                case 'list': {
 	                    const tag = el.list_type === 'ordered' ? 'ol' : 'ul';
 	                    const listStyle = el.list_type === 'ordered'
@@ -195,7 +194,7 @@
 	                        ${items}
 	                        </${tag}>`;
 	                }
-	
+
 	                case 'image': {
 	                    const url = el.url ?? el.additional_properties?.originalUrl ?? '';
 	                    const caption = el.caption ?? '';
@@ -204,7 +203,7 @@
 	                    const src = el.resizedUrls?.article_lg
 	                        ?? el.resizedUrls?.article_md
 	                        ?? url;
-	
+
 	                    return `
 	                        <figure style="margin: 0 0 24px 0; padding: 0;">
 	                        <img src="${src}" alt="${alt}" style="width: 100%; display: block;" loading="lazy">
@@ -213,7 +212,7 @@
 	                        : ''}
 	                        </figure>`;
 	                }
-	
+
 	                case 'video': {
 	                    const thumb = el.promo_items?.basic?.url ?? '';
 	                    const title = el.headlines?.basic ?? '';
@@ -228,7 +227,7 @@
 	                        : ''}
 	                        </figure>`;
 	                }
-	
+
 	                case 'gallery': {
 	                    const title = el.headlines?.basic ?? '';
 	                    const images = (el.content_elements ?? [])
@@ -239,7 +238,7 @@
 	                                            ?? img.url ?? '';
 	                                        const caption = img.subtitle || img.caption || '';
 	                                        const alt = img.subtitle ?? '';
-	
+
 	                                        return `
 	                                            <figure style="margin: 0 0 12px 0; padding: 0;">
 	                                            <img
@@ -261,7 +260,7 @@
 	                                                </figure>`;
 	                                    })
 	                            .join('\n');
-	
+
 	                    return `
 	                        <div style="margin-bottom: 24px;">
 	                        ${title
@@ -275,14 +274,14 @@
 	                    ${images}
 	                    </div>`;
 	                }
-	
+
 					case 'oembed_response': {
 						const embedHtml = el.raw_oembed?.html ?? '';
 						if (!embedHtml) return '';
-	
+
 						const isYoutube = el.subtype === 'youtube';
-	
-						// 유튜브는 16:9 비율 반응형 래퍼로 감싸기	
+
+						// 유튜브는 16:9 비율 반응형 래퍼로 감싸기
 						if (isYoutube) {
 							return `
 								<div style="
@@ -308,12 +307,12 @@
 								</div>
 								</div>`;
 						}
-	
+
 						// 그 외 oembed (트위터 등): raw html 그대로
 						alert('!!!!!!!!!NEW SUBTYPE of oembed_response!!!!!!!!!'+el.subtype);
 						return `<div style="margin: 0 0 24px 0;">${embedHtml}</div>`;
 					}
-						
+
 	                default: {
 						alert('!!!!!!!!!NEW TYPE!!!!!!!!!'+el.type);
 	                    return el.content
@@ -331,14 +330,19 @@
 	            <div>${inner}</div>
 	            `.trim();
 	    }
-	
+
 	    const html = contentElementsToHTML(fusion.globalContent.content_elements);
 	    console.log(html);
 
 	    // 기존 본문 컨테이너를 교체
+	    const articleBody = document.querySelector('.article-body');
+	    if (articleBody == null) {
+	        console.warn('[Chosun] .article-body not found');
+	        return;
+	    }
 	    articleBody.innerHTML = html;
 	    console.info('[Chosun] Article restored successfully');
 	}
-	
-	window.addEventListener('load', main); 
+
+	window.addEventListener('load', main);
 })();
