@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.5.9
+// @version      0.6.1
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        https://www.chosun.com/*
@@ -311,7 +311,6 @@
 	    // 기존 본문 컨테이너를 찾아
 	    //const fusion_app = document.querySelector('#fusion-app');
 	    const Fusion = window?.Fusion;
-      //if (fusion_app == null) {
       if (!Fusion) {
 	        console.warn('[Chosun] window.Fusion not found');
           setTimeout(main, 300);
@@ -319,8 +318,7 @@
 	    }
 
 	    // Fusion globalContent에서 본문 추출
-	    //const fusion = window?.Fusion;
-      const contentElements=Fusion?.globalContent?.content_elements
+      const contentElements=Fusion?.globalContent?.content_elements;
 	    if (!contentElements) {
 	        console.warn('[Chosun] Fusion.globalContent.content_elements not found');
 	        return;
@@ -329,10 +327,11 @@
 	    const html = contentElementsToHTML(contentElements);
 	    console.log(html);
 
-	    const freeBanner = document.querySelector('.status-banner.free-banner');
-	    //const membershipWall = document.querySelector('.membership-wall');
-      const membershipBanner = document.querySelector('.article-membership-banner');
-      if (freeBanner !=null || membershipBanner == null) {
+      //const membershipBanner = document.querySelector('.article-membership-banner');
+	    //const freeBanner = document.querySelector('.status-banner.free-banner');
+	    const membershipWall = document.querySelector('.membership-wall');
+      //if (freeBanner != null || membershipBanner == null) {
+      if(membershipWall == null) {
 	        console.warn('[Chosun] .membership-wall not found');
 	        return;
 	    }
