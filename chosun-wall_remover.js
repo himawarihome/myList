@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.6.1
+// @version      0.6.2
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        https://www.chosun.com/*
@@ -308,8 +308,6 @@
 	            `.trim();
 	    }
 
-	    // 기존 본문 컨테이너를 찾아
-	    //const fusion_app = document.querySelector('#fusion-app');
 	    const Fusion = window?.Fusion;
       if (!Fusion) {
 	        console.warn('[Chosun] window.Fusion not found');
