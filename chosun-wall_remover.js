@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.6.4
+// @version      0.6.5
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        https://www.chosun.com/*
@@ -70,14 +70,14 @@
 // 	            padding-left: 4px;
 // 	            `;
 
-	        const CAPTION_STYLE = `
-	            margin-top: 8px;
-	            font-family: "NotoSansKR-Regular", sans-serif;
-	            font-size: 14px;
-	            color: #707070;
-	            letter-spacing: -0.3px;
-	            word-break: keep-all;
-	            `;
+	        // const CAPTION_STYLE = `
+	        //     margin-top: 8px;
+	        //     font-family: "NotoSansKR-Regular", sans-serif;
+	        //     font-size: 14px;
+	        //     color: #707070;
+	        //     letter-spacing: -0.3px;
+	        //     word-break: keep-all;
+	        //     `;
 
 	        const inner = contentElements.map((el) => {
 	            switch (el.type) {
@@ -93,7 +93,7 @@
 					case 'quote': {
 						const isPullquote = el.subtype === 'pullquote';
 						const citation = el.citation?.content ?? '';
-
+if(citation) alert('quote citation!!!');
 						const inner = (el.content_elements ?? [])
 							.map((item, i) => `
 								<div class="mt-md">${item.content ?? ''}</div>
@@ -123,14 +123,7 @@
 							<blockquote class="quote flex--justify-center font--secondary-bold box--margin-none text--black box--margin-top-md box--margin-bottom-md">
 							${inner}
 							${citation
-							? `<cite style="
-								display: block;
-								margin-top: 12px;
-								font-family: 'NotoSansKR-Regular', sans-serif;
-								font-size: 14px;
-								color: #707070;
-								font-style: normal;
-								">${citation}</cite>`
+							? `<cite>${citation}</cite>`
 							: ''}
               </blockquote>
               </aside>`;
@@ -141,14 +134,7 @@
 						<blockquote class="article-body__content article-body__content-blockquote | quote font--secondary box--border-grey-40 box--border-md box--margin-none box--border box--border-vertical box--border-vertical-left box--pad-left-md font--size-sm-20 font--size-md-20  text--black box--margin-top-md box--margin-bottom-md">
 						${inner}
 						${citation
-						? `<cite style="
-							display: block;
-							margin-top: 12px;
-							font-family: 'NotoSansKR-Regular', sans-serif;
-							font-size: 14px;
-							color: #707070;
-							font-style: normal;
-							">${citation}</cite>`
+						? `<cite>${citation}</cite>`
 						: ''}
 						</blockquote>`;
 					}
