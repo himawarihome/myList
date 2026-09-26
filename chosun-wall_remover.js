@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.6.2
+// @version      0.6.3
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        https://www.chosun.com/*
@@ -102,16 +102,25 @@
 
 					// pullquote: 위아래 구분선 박스
 					if (isPullquote) {
-						alert("pullquote");
+//						alert("pullquote");
+//						return `
+//							<blockquote style="
+//							margin: 24px 0;
+//							padding: 20px 24px;
+//							background: #f8f8f8;
+//							border-top: 1px solid #9C9C9C;
+//							border-bottom: 1px solid #9C9C9C;
+//							box-sizing: border-box;
+//							">
 						return `
-							<blockquote style="
-							margin: 24px 0;
-							padding: 20px 24px;
-							background: #f8f8f8;
-							border-top: 1px solid #9C9C9C;
-							border-bottom: 1px solid #9C9C9C;
-							box-sizing: border-box;
-							">
+              <aside class="article-body__content article-body__content-pullquote | quote font--secondary text--grey-60 flex flex--direction-column font--size-sm-20 font--size-md-20 ">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13">
+              <g fill="#999">
+              <path d="M.5 9.512c0-1.69.214-3.17.75-4.333.536-1.163 1.393-2.431 2.571-3.594l.429-.422c.214-.212.429-.317.643-.529.214-.211.428-.317.643-.423C5.75.106 5.857 0 6.07 0c.108 0 .215 0 .322.106C6.5.21 6.5.317 6.5.423c0 .105-.214.317-.536.74-.321.422-.75.95-1.178 1.48-.429.633-.857 1.268-1.179 2.007-.321.74-.536 1.48-.536 2.22 0 .211.108.423.322.528.428.106.857.106 1.286.212.428.105.75.211.964.423.214.21.536.422.643.845.214.317.214.74.214 1.268 0 .74-.321 1.48-.857 2.008-.536.529-1.286.846-2.036.846-.428 0-.857-.106-1.286-.317-.428-.211-.75-.423-.964-.74-.321-.317-.536-.74-.643-1.163C.5 10.358.5 9.935.5 9.512zM8 9.512c0-1.69.214-3.17.75-4.333.536-1.163 1.393-2.431 2.571-3.594l.429-.422c.214-.212.429-.317.643-.529.214-.211.428-.317.643-.423.214-.105.321-.211.535-.211.108 0 .215 0 .322.106C14 .21 14 .317 14 .423c0 .105-.214.317-.536.74-.321.422-.75.95-1.178 1.48-.429.528-.857 1.268-1.179 2.007-.321.74-.536 1.48-.536 2.22 0 .211.108.423.322.528.428.106.857.106 1.286.212.428.105.75.211.964.423.214.21.536.422.643.845.214.317.214.74.214 1.268 0 .74-.321 1.48-.857 2.008-.536.529-1.286.846-2.036.846-.428 0-.857-.106-1.286-.317-.428-.211-.75-.423-.964-.74-.321-.317-.536-.74-.643-1.163C8.107 10.358 8 9.935 8 9.512z">
+              </path>
+              </g>
+              </svg>
+							<blockquote class="quote flex--justify-center font--secondary-bold box--margin-none text--black box--margin-top-md box--margin-bottom-md">
 							${inner}
 							${citation
 							? `<cite style="
@@ -123,7 +132,8 @@
 								font-style: normal;
 								">${citation}</cite>`
 							: ''}
-							</blockquote>`;
+              </blockquote>
+              </aside>`;
 					}
 
 					// blockquote: 좌측 회색 세로줄 (실제 렌더링 기준)
