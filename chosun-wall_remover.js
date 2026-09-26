@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.6.3
+// @version      0.6.4
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        https://www.chosun.com/*
@@ -191,12 +191,13 @@
 	                        ?? el.resizedUrls?.article_md
 	                        ?? url;
 
+                          //${caption || credit
+	                        //? `<figcaption style="${CAPTION_STYLE}">${caption}${caption && credit ? ' ' : ''}${credit ? `/ ${credit}` : ''}</figcaption>`
+	                        //: ''}
 	                    return `
-	                        <figure style="margin: 0 0 24px 0; padding: 0;">
-	                        <img src="${src}" alt="${alt}" style="width: 100%; display: block;" loading="lazy">
-	                        ${caption || credit
-	                        ? `<figcaption style="${CAPTION_STYLE}">${caption}${caption && credit ? ' ' : ''}${credit ? `/ ${credit}` : ''}</figcaption>`
-	                        : ''}
+	                        <figure class=" article-body__content article-body__content-image | visual__image visual__image--cover">
+	                        <img src="${src}" alt="${alt}" loading="lazy">
+                          <figcaption class="text--grey-80 box--pad-top-xs font--size-sm-14 font--size-md-14 font--primary">${caption}</figcaption>
 	                        </figure>`;
 	                }
 
