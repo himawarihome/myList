@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.6.5
+// @version      0.6.7
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        https://www.chosun.com/*
@@ -14,6 +14,21 @@
 
 (function () {
     'use strict';
+
+  function imageElementToHTML(image) {
+            const src = image.url
+            const caption = (image.subtitle ?? '') + image.caption;
+            const alt = image.alt_text ?? '';
+            const credit = image.credits?.affiliation?.[0]?.name ?? '';
+
+            return `
+                <figure class=" article-body__content article-body__content-image | visual__image visual__image--cover">
+                <img src="${src}" alt="${alt}" loading="lazy">
+                <figcaption class="text--grey-80 box--pad-top-xs font--size-sm-14 font--size-md-14 font--primary">
+                  ${caption}${caption && credit ? ' ' : ''}${credit ? `/ ${credit}` : ''}
+                </figcaption>
+                </figure>`;
+  }
 
 	function main() {
 	    function contentElementsToHTML(contentElements) {
@@ -169,22 +184,7 @@ if(citation) alert('quote citation!!!');
 	                }
 
 	                case 'image': {
-	                    const url = el.url ?? el.additional_properties?.originalUrl ?? '';
-	                    const caption = el.caption ?? '';
-	                    const alt = el.alt_text ?? caption ?? '';
-	                    const credit = el.credits?.affiliation?.[0]?.name ?? '';
-	                    const src = el.resizedUrls?.article_lg
-	                        ?? el.resizedUrls?.article_md
-	                        ?? url;
-
-                          //${caption || credit
-	                        //? `<figcaption style="${CAPTION_STYLE}">${caption}${caption && credit ? ' ' : ''}${credit ? `/ ${credit}` : ''}</figcaption>`
-	                        //: ''}
-	                    return `
-	                        <figure class=" article-body__content article-body__content-image | visual__image visual__image--cover">
-	                        <img src="${src}" alt="${alt}" loading="lazy">
-                          <figcaption class="text--grey-80 box--pad-top-xs font--size-sm-14 font--size-md-14 font--primary">${caption}</figcaption>
-	                        </figure>`;
+                      return imageElementToHTML(el);
 	                }
 
 	                case 'video': {
@@ -207,46 +207,10 @@ if(citation) alert('quote citation!!!');
 	                    const images = (el.content_elements ?? [])
 	                        .filter(img => img.type === 'image')
 	                        .map(img => {
-	                                        const src = img.resizedUrls?.article_lg
-	                                            ?? img.resizedUrls?.article_md
-	                                            ?? img.url ?? '';
-	                                        const caption = img.subtitle || img.caption || '';
-	                                        const alt = img.subtitle ?? '';
+                              return imageElementToHTML(img);})
+                          .join('\n');
 
-	                                        return `
-	                                            <figure style="margin: 0 0 12px 0; padding: 0;">
-	                                            <img
-	                                            src="${src}"
-	                                            alt="${alt}"
-	                                            style="width: 100%; display: block;"
-	                                            loading="lazy"
-	                                            >
-	                                            ${caption
-	                                                ? `<figcaption style="
-	                                                margin-top: 8px;
-	                                                font-family: 'NotoSansKR-Regular', sans-serif;
-	                                                font-size: 14px;
-	                                                color: #707070;
-	                                                letter-spacing: -0.3px;
-	                                                word-break: keep-all;
-	                                                ">${caption}</figcaption>`
-	                                                : ''}
-	                                                </figure>`;
-	                                    })
-	                            .join('\n');
-
-	                    return `
-	                        <div style="margin-bottom: 24px;">
-	                        ${title
-	                        ? `<p style="
-	                        font-family: 'NotoSansKR-Regular', sans-serif;
-	                        font-size: 14px;
-	                        color: #707070;
-	                        margin: 0 0 12px 0;
-	                        ">${title}</p>`
-	                    : ''}
-	                    ${images}
-	                    </div>`;
+	                    return `<div class=" article-body__content article-body__content-image | visual__image visual__image--cover">${title ? `<p>${title}</p>` : ''}${images}</div>`;
 	                }
 
 					case 'oembed_response': {
