@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Chosun Wall Remover
 // @description  Chosun Wall Remover
-// @version      0.6.7
+// @version      0.6.8
 // @namespace    http://tampermonkey.net/
 // @author       J W
 // @match        https://www.chosun.com/*
@@ -16,7 +16,7 @@
     'use strict';
 
   function imageElementToHTML(image) {
-            const src = image.url
+            const src = image.url;
             const caption = (image.subtitle ?? '') + image.caption;
             const alt = image.alt_text ?? '';
             const credit = image.credits?.affiliation?.[0]?.name ?? '';
@@ -197,7 +197,7 @@ if(citation) alert('quote citation!!!');
 	                        ${mp4 ? `<source src="${mp4}" type="video/mp4">` : ''}
 	                        </video>
 	                        ${title
-	                        ? `<figcaption style="${CAPTION_STYLE}">${title}</figcaption>`
+	                        ? `<figcaption>${title}</figcaption>`
 	                        : ''}
 	                        </figure>`;
 	                }
