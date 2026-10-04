@@ -192,14 +192,14 @@ if(citation) alert('quote citation!!!');
 	                    const title = el.headlines?.basic ?? '';
 	                    const mp4 = el.streams?.find(s => s.stream_type === 'mp4')?.url ?? '';
 	                    return `
-	                        <figure style="margin: 0 0 24px 0; padding: 0;">
+	                        <div class="article-body__content article-body__content-video">
 	                        <video controls poster="${thumb}" style="width: 100%; display: block;">
 	                        ${mp4 ? `<source src="${mp4}" type="video/mp4">` : ''}
 	                        </video>
 	                        ${title
 	                        ? `<figcaption>${title}</figcaption>`
 	                        : ''}
-	                        </figure>`;
+	                        </div>`;
 	                }
 
 	                case 'gallery': {
@@ -210,7 +210,8 @@ if(citation) alert('quote citation!!!');
                               return imageElementToHTML(img);})
                           .join('\n');
 
-	                    return `<div class=" article-body__content article-body__content-image | visual__image visual__image--cover">${title ? `<p>${title}</p>` : ''}${images}</div>`;
+	                    //return `<div class=" article-body__content article-body__content-image | visual__image visual__image--cover">${title ? `<p>${title}</p>` : ''}${images}</div>`;
+                      return `<div class=" article-body__content article-body__content-image | visual__image visual__image--cover">${images}</div>`;
 	                }
 
 					case 'oembed_response': {
