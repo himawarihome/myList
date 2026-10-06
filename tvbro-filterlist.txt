@@ -1,3 +1,4 @@
 !tvwiki tvmon
-||api3.peertrk.com/data/banner/^
+/data/banner/
+!||api3.peertrk.com/data/banner/
 ||player.bunny-frame.online/v/7Yr1502
