@@ -1,5 +1,5 @@
 /data/banner/$image
-*$websocket
+! *$websocket
 ||peertrk.com/api/live/report
 
 ! tvwiki
