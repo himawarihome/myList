@@ -1,4 +1,6 @@
 /data/banner/$image
+*$websocket
+||peertrk.com/api/live/report
 
 ! tvwiki
 ###bannerList
@@ -8,4 +10,4 @@
 ##.banner_wrap2
 
 bunny-frame.online##+js(set, TVP_CONFIG.banner, undefined)
-||peertrk.com/api/live/report
+
