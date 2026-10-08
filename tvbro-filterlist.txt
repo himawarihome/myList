@@ -1,4 +1,5 @@
 /data/banner/$image
+||player.bunny-frame.online/v/*$subdocument
 *$websocket
 ||peertrk.com/api/live/report
 
