@@ -1,7 +1,9 @@
 /data/banner/$image
 ||player.bunny-frame.online/v/*$subdocument
-*$websocket
+*$websocket,domain=bunny-frame.online
 ||peertrk.com/api/live/report
+
+bunny-frame.online##+js(set, TVP_CONFIG.banner, undefined)
 
 ! tvwiki
 ###bannerList
@@ -9,6 +11,3 @@
 
 ! tvmon
 ##.banner_wrap2
-
-bunny-frame.online##+js(set, TVP_CONFIG.banner, undefined)
-
