@@ -7,8 +7,9 @@ t.peertrk.com
 tracker.netguard742.com
 tracker.openwebtorrent.com
 tracker.novage.com.ua
-
 personal.tracker.com
+
+||cdn.jsdelivr.net/npm/*$script
 
 bunny-frame.online##+js(set, TVP_CONFIG.banner, undefined)
 
