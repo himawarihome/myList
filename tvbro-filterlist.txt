@@ -3,11 +3,11 @@
 *$websocket,domain=bunny-frame.online
 ||peertrk.com/api/live/report
 
-t.peertrk.com
-tracker.netguard742.com
-tracker.openwebtorrent.com
-tracker.novage.com.ua
-personal.tracker.com
+||t.peertrk.com
+||tracker.netguard742.com
+||tracker.openwebtorrent.com
+||tracker.novage.com.ua
+||personal.tracker.com
 
 ||cdn.jsdelivr.net/npm/p2p-media-loader-core@3.0.1/*$script
 ||cdn.jsdelivr.net/npm/p2p-media-loader-hlsjs@3.0.1/*$script
