@@ -10,9 +10,11 @@
 ||tracker.openwebtorrent.com
 ||tracker.novage.com.ua
 ||personal.tracker.com
+||tracker.bunny-frame.online
+||tracker.webtorrent.dev
 
-||cdn.jsdelivr.net/npm/p2p-media-loader-core@3.0.1/*$script
-||cdn.jsdelivr.net/npm/p2p-media-loader-hlsjs@3.0.1/*$script
+! ||cdn.jsdelivr.net/npm/p2p-media-loader-core@3.0.1/*$script
+! ||cdn.jsdelivr.net/npm/p2p-media-loader-hlsjs@3.0.1/*$script
 
 bunny-frame.online##+js(set, TVP_CONFIG.banner, undefined)
 
