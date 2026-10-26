@@ -13,8 +13,7 @@
 ||tracker.bunny-frame.online
 ||tracker.webtorrent.dev
 
-! ||cdn.jsdelivr.net/npm/p2p-media-loader-core@3.0.1/*$script
-! ||cdn.jsdelivr.net/npm/p2p-media-loader-hlsjs@3.0.1/*$script
+||player.bunny-frame.online/player/assets/p2p-report.js
 
 bunny-frame.online##+js(set, TVP_CONFIG.banner, undefined)
 
