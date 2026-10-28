@@ -1,10 +1,11 @@
 !/data/banner/$image
 
+tvwiki[0-9]+\.net###dnsguide-modal-overlay
 tvwiki[0-9]+\.net###bannerList
-###viewCover
-##img[src*="/banner/"]
+tvwiki[0-9]+\.net###viewCover
+tvwiki[0-9]+\.net##img[src*="/banner/"]
 
-##.banner_wrap2
+tvmon[0-9]+\.com##.banner_wrap2
 
 !*$websocket,domain=bunny-frame.online
 !||peertrk.com/api/live/report$domain=bunny-frame.online
