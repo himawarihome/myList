@@ -1,6 +1,6 @@
 !/data/banner/$image
 
-###bannerList
+tvwiki[0-9]+\.net###bannerList
 ###viewCover
 ##img[src*="/banner/"]
 
