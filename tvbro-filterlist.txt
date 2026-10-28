@@ -1,8 +1,8 @@
-!/data/banner/$image
+/data/banner/$image
 ||player.bunny-frame.online/v/*$subdocument
 *$websocket,domain=bunny-frame.online
 !||peertrk.com/api/live/report
-!||tracker.bunny-frame.online/c
+||tracker.bunny-frame.online/c
 ||player.bunny-frame.online/js/ad_fetcher.js
 
 ||t.peertrk.com
