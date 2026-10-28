@@ -7,7 +7,7 @@
 
 ##.banner_wrap2
 
-!*$websocket,domain=bunny-frame.online
+*$websocket
 !||peertrk.com/api/live/report$domain=bunny-frame.online
 ||tracker.bunny-frame.online/c
 ||player.bunny-frame.online/player/assets/p2p-report.js
