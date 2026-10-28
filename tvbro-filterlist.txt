@@ -1,6 +1,17 @@
+[$domain=/^tvwiki[0-9]*\.net/]/data/banner/$image
 [$domain=/^tvwiki[0-9]*\.net/]###bannerList, #viewCover, img[src*="/banner/"]
+[$domain=/^tvmon[0-9]*\.[a-z]{2,}/]/data/banner/$image
 [$domain=/^tvmon[0-9]*\.[a-z]{2,}/]##.banner_wrap2
 !*$websocket,domain=bunny-frame.online
 !||peertrk.com/api/live/report$domain=bunny-frame.online
+||tracker.bunny-frame.online/c
 ||player.bunny-frame.online/js/ad_fetcher.js
 bunny-frame.online##+js(set, TVP_CONFIG.banner, undefined)
+
+||t.peertrk.com
+||tracker.netguard742.com
+||tracker.openwebtorrent.com
+||tracker.novage.com.ua
+||personal.tracker.com
+||tracker.bunny-frame.online
+||tracker.webtorrent.dev
