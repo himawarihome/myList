@@ -1,3 +1,4 @@
+get*ads-*-du.a.run.app
 kamp.kakao.com
 shortformstats.kakao.com
 thumb.kakaocdn.net
