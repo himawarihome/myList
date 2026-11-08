@@ -1,3 +1,6 @@
+! Title: 티비위키 필터
+! Homepage: https://github.com/himawarihome/myList
+
 [$domain=/^tvwiki[0-9]*\.net/]###dnsguide-modal-overlay
 
 ||bunny-video.com/js/ad_fetcher.js
