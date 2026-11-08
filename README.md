@@ -5,3 +5,7 @@ https://raw.githubusercontent.com/himawarihome/myList/refs/heads/main/chosun-wal
 ```
 https://raw.githubusercontent.com/himawarihome/myList/refs/heads/main/tvbro-filterlist.txt
 ```
+
+```
+https://raw.githubusercontent.com/himawarihome/myList/refs/heads/main/tvwiki-filterlist.txt
+```
