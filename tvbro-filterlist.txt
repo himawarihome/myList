@@ -1,9 +1,9 @@
 /data/banner/$image
 
-###dnsguide-modal-overlay
-###bannerList
-###viewCover
-##img[src*="/banner/"]
+net###dnsguide-modal-overlay
+net###bannerList
+net###viewCover
+net##img[src*="/banner/"]
 
 ##.banner_wrap2
 
