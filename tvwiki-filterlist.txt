@@ -1,5 +1,6 @@
 ! Title: 티비위키 필터
 ! Homepage: https://github.com/himawarihome/myList
+! Expires: 1 day (update frequency)
 
 ||bunny-video.com/js/ad_fetcher.js
 bunny-video.com##+js(set, TVP_CONFIG.banner, undefined)
