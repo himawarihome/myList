@@ -14,5 +14,3 @@ bunny-video.com##+js(set, TVP_CONFIG.banner, undefined)
 
 ! bunny-video.com##+js(set, RTCPeerConnection , undefined)
 ! bunny-video.com##+js(set, WebSocket, undefined)
-
-||test.com
