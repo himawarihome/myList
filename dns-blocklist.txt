@@ -7,3 +7,6 @@ veta.naver.com
 
 cdn-ads.tmap.co.kr
 advertisement-gw.travel-wallet.com
+
+tracker.bunny-frame.online
+tracker.openwebtorrent.com
