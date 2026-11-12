@@ -11,6 +11,8 @@ bunny-video.com##+js(set, TVP_CONFIG.banner, undefined)
 ||tracker.bunny-frame.online/c
 
 !*$websocket,domain=bunny-video.com
+tracker.bunny-frame.online/ws$websocket
+tracker.openwebtorrent.com$websocket
 
 ! bunny-video.com##+js(set, RTCPeerConnection , undefined)
 ! bunny-video.com##+js(set, WebSocket, undefined)
