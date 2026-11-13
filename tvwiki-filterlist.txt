@@ -2,15 +2,15 @@
 ! Homepage: https://github.com/himawarihome/myList
 ! Expires: 1 day (update frequency)
 
-||bunny-video.com/js/ad_fetcher.js
-bunny-video.com##+js(set, TVP_CONFIG.banner, undefined)
+! ||bunny-video.com/js/ad_fetcher.js
+! bunny-video.com##+js(set, TVP_CONFIG.banner, undefined)
 
 ||static.cloudflareinsights.com/beacon.min.js
 ||bunny-video.com/player/assets/p2p-report.js
 ||bunny-video.com/player/api/beacon.php
-||tracker.bunny-frame.online/c
+! ||tracker.bunny-frame.online/c
 
-*$websocket,domain=bunny-video.com
+! *$websocket,domain=bunny-video.com
 
 ! bunny-video.com##+js(set, RTCPeerConnection , undefined)
 ! bunny-video.com##+js(set, WebSocket, undefined)
