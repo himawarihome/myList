@@ -1,11 +1,11 @@
 /data/banner/$image
 
-[$domain=/^tvwiki[0-9]*\.net/]###dnsguide-modal-overlay
-[$domain=/^tvwiki[0-9]*\.net/]###bannerList
-[$domain=/^tvwiki[0-9]*\.net/]###viewCover
-[$domain=/^tvwiki[0-9]*\.net/]##img[src*="/banner/"]
+net###dnsguide-modal-overlay
+net###bannerList
+net###viewCover
+net##img[src*="/banner/"]
 
-[$domain=/^tvmon[0-9]*\.[a-z]{2,}/]##.banner_wrap2
+com##.banner_wrap2
 
 ||bunny-video.com/js/ad_fetcher.js
 bunny-video.com##+js(set, TVP_CONFIG.banner, undefined)
