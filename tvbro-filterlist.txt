@@ -1,11 +1,11 @@
 !/data/banner/$image
 
-tvwiki*.net###dnsguide-modal-overlay
-tvwiki*.net###bannerList
-tvwiki*.net###viewCover
-tvwiki*.net##img[src*="/banner/"]
+net###dnsguide-modal-overlay
+net###bannerList
+net###viewCover
+net##img[src*="/banner/"]
 
-tvmon*.com##.banner_wrap2
+com##.banner_wrap2
 
 ||bunny-video.com/js/ad_fetcher.js
 bunny-video.com##+js(set, TVP_CONFIG.banner, undefined)
